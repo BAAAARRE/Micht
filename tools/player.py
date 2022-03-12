@@ -7,3 +7,6 @@ class Player:
 
     def add_card(self, card):
         self.cards.append(card)
+
+    def reinitialize_cards(self):
+        self.cards = []
