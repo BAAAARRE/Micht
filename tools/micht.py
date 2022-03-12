@@ -6,6 +6,10 @@ class Micht:
     def __init__(self):
         self.players = []
         self.nb_players = 0
+        self.liar = False
+        self.current_call = ""
+        self.last_player = ""
+        self.last_player_cards = ""
 
     def register_player(self, player_name):
         player = Player(player_name)
