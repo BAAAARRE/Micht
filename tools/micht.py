@@ -23,6 +23,15 @@ class Game:
             if player.name == player_name:
                 player.nb_life = player.nb_life - 1
 
+    def check_if_one_player_is_dead(self):
+        for player in self.players:
+            if player.nb_life == 0:
+                player_dead = player.name
+                break
+            else:
+                player_dead = ""
+        return player_dead
+
     def show_nb_life_player(self):
         for player in self.players:
             print(f"Il reste {player.nb_life} vie(s) à {player.name}")
@@ -71,7 +80,7 @@ class Round:
                         liar_input = input("Est ce que c'est un menteur (Y/N)")
 
                         if liar_input == "Y":
-                            print(f"{self.last_player} a call '{self.current_call}' et il avait {self.last_player_cards}")
+                            print(f"\n{self.last_player} a call '{self.current_call}' et il avait {self.last_player_cards}")
                             self.liar = True
                             break
 
