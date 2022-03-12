@@ -4,12 +4,17 @@ from tools import micht
 def main():
     game = micht.Micht()
 
-    game.register_player("Antoine")
-    game.register_player("Florent")
-    game.register_player("Bagna")
+    while True:
+        player_name = input("Ajouter le nom du joueur, appuyer 'Entrée' si vous avez finis : ")
+        if len(player_name) > 0:
+            game.register_player(player_name)
+            print(f"{player_name} a été ajouté")
+        else:
+            print("\nLe micht commence !")
+            break
+
     game.update_nb_players()
     game.distribute_cards(3)
-    print("Le micht commence !")
     print("Les cartes ont été distribué\n")
 
     while not game.liar:
@@ -33,7 +38,7 @@ def main():
                     liar_input = input("Est ce que c'est un menteur (y/n)").lower()
 
                     if liar_input == "y":
-                        print(f"{player.name} a call {game.current_call} et il avait {game.last_player_cards}")
+                        print(f"{game.last_player} a call '{game.current_call}' et il avait {game.last_player_cards}")
                         game.liar = True
                         break
 
