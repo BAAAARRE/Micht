@@ -14,6 +14,11 @@ class Micht:
     def update_nb_players(self):
         self.nb_players = len(self.players)
 
-    def distribute_cards(self):
+    def distribute_cards(self, nb_cards_to_distribute):
         full_cards = Deck.generate_cards(self.nb_players)
-        print(full_cards)
+        sub_deck = [full_cards[i:i+nb_cards_to_distribute] for i in range(0, len(full_cards), nb_cards_to_distribute)]
+        num_sub_deck = 0
+        for player in self.players:
+            for card in sub_deck[num_sub_deck]:
+                player.add_card(card)
+            num_sub_deck += 1

@@ -8,10 +8,7 @@ def main():
     game.register_player("Florent")
     game.update_nb_players()
 
-    print([player.name for player in game.players])
-    print(game.nb_players)
-
-    game.distribute_cards()
+    game.distribute_cards(3)
 
 
 if __name__ == "__main__":
