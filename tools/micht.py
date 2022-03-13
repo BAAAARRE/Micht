@@ -60,8 +60,8 @@ class Round:
             num_sub_deck += 1
 
     def game_round(self):
+        self.distributed_cards = ", ".join([card.full_name for card in self.distributed_cards])
         while not self.liar:
-            self.distributed_cards = ", ".join([card.full_name for card in self.distributed_cards])
             for player in self.players:
                 player_cards = ", ".join([card.full_name for card in player.cards])
                 print(f"C'est à {player.name} de jouer")
@@ -81,8 +81,9 @@ class Round:
                         liar_input = input("Est ce que c'est un menteur (Y/N)")
 
                         if liar_input == "Y":
-                            print(f"""\n{self.last_player} a call '{self.current_call}' et il y avait 
-                            {self.distributed_cards} dans le jeu""")
+                            print(
+                                f"\n{self.last_player} a call '{self.current_call}' et il y avait {self.distributed_cards} dans le jeu"
+                            )
                             self.liar = True
                             break
 
